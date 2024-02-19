@@ -1,0 +1,14 @@
+<div class="block pulsing preview" [class.pulsing]="!isLoaded()">
+  @if (isLoaded()) {
+  <h2>{{ assessmentInfo().title }}</h2>
+  <div class="subtitle">{{ assessmentInfo().subtitle }}</div>
+  } @else {
+  <h2>Auswertung wird geladen...</h2>
+  }
+
+  <div class="content">
+    @for (module of assessmentInfo().modules; track module.type) {
+    <app-assessment-module-preview></app-assessment-module-preview>
+    }
+  </div>
+</div>

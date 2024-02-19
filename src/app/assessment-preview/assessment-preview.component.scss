@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+h2 {
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.subtitle {
+  padding: 1rem;
+  padding-top: 0;
+}
+
+.preview .content {
+  min-height: 20rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: clamp(0rem, (100% - 360px) / 2, 1rem);
+  padding-right: clamp(0rem, (100% - 360px) / 2, 1rem);
+}
