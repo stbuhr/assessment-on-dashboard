@@ -31,9 +31,11 @@ export const defaultAssessmentInfo: AssessmentInfo = {
 };
 
 export type CompetenceProfileInfo = {
+  assessmentId: string;
   content: string;
 };
 
 export const defaultCompetenceProfileInfo: CompetenceProfileInfo = {
+  assessmentId: '',
   content: '',
 };

@@ -38,6 +38,7 @@ const assessmentInfo: AssessmentInfo = {
 };
 
 const competenceProfileInfo: CompetenceProfileInfo = {
+  assessmentId: '123',
   content: `<p>Über dein <strong>KODE® Kompetenzprofil</strong> erhälst du Aufschluss über deine 4 Basiskompetenzen</p>`,
 };
 

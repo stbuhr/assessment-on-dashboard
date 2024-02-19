@@ -2,8 +2,11 @@ import { CommonModule } from '@angular/common';
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
   OnInit,
+  Output,
   computed,
+  effect,
   inject,
   input,
   signal,
@@ -18,15 +21,27 @@ import { AssessmentLoaderService } from '../assessment-loader.service';
   styleUrl: './competence-profile-preview.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CompetenceProfilePreviewComponent implements OnInit {
+export class CompetenceProfilePreviewComponent {
   assessmentLoader = inject(AssessmentLoaderService);
 
-  assessmentId = input<string>('');
+  private _assessmentId = '';
+  assessmentId = input<string>(this._assessmentId);
+  private _infoId = '';
   competenceProfileInfo = this.assessmentLoader.competenceProfileInfo;
   isLoading = computed(() => this.competenceProfileInfo().content === '');
 
-  // TODO: Load on change of assessmentId
-  ngOnInit(): void {
-    this.assessmentLoader.loadCompetenceProfileInfo(this.assessmentId());
+  @Output() stateChanged = new EventEmitter<boolean>();
+
+  constructor() {
+    effect(() => {
+      if (this.assessmentId() !== this._assessmentId) {
+        this._assessmentId = this.assessmentId();
+        this.assessmentLoader.loadCompetenceProfileInfo(this.assessmentId());
+      }
+      if (this._infoId !== this.competenceProfileInfo().assessmentId) {
+        this._infoId = this.competenceProfileInfo().assessmentId;
+        this.stateChanged.emit(true);
+      }
+    });
   }
 }

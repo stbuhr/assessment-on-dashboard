@@ -1,8 +1,11 @@
-<div class="block pulsing module">
+<div class="block module" [class.pulsing]="isLoading()">
   <h3>{{ title() }}</h3>
   <div class="content">
     @switch (moduleInfo().type) { @case ('CompetenceProfile') {
-    <app-competence-profile-preview></app-competence-profile-preview>
+    <app-competence-profile-preview
+      assessmentId="assessmentId"
+      (stateChanged)="stateChanged($event)"
+    ></app-competence-profile-preview>
     } @default { Es kann keine Vorschau angezeigt werden! } }
   </div>
 </div>

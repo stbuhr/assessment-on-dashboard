@@ -11,6 +11,7 @@ import {
   defaultAssessmentModuleInfo,
 } from '../assessment-info';
 import { CompetenceProfilePreviewComponent } from '../competence-profile-preview/competence-profile-preview.component';
+import { delay } from 'rxjs';
 
 @Component({
   selector: 'app-assessment-module-preview',
@@ -24,4 +25,12 @@ export class AssessmentModulePreviewComponent {
   assessmentId = input<string>('');
   moduleInfo = input<AssessmentModuleInfo>(defaultAssessmentModuleInfo);
   title = computed(() => this.moduleInfo().title);
+  isLoading = signal(true);
+
+  stateChanged($event: boolean) {
+    // Don't change a state inside an effect handler
+    setTimeout(() => {
+      this.isLoading.set(false);
+    }, 100);
+  }
 }

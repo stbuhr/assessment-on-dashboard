@@ -21,7 +21,7 @@ import { AssessmentLoaderService } from '../assessment-loader.service';
 export class AssessmentPreviewComponent {
   assessmentLoader = inject(AssessmentLoaderService);
 
-  assessmentId = input<string>('');
+  assessmentId = input<string>('123');
   assessmentInfo = this.assessmentLoader.assessmentInfo;
   title = signal('Auswertung wird geladen ...');
   isLoaded = computed(() => this.assessmentInfo().modules.length > 0);
