@@ -39,3 +39,13 @@ export const defaultCompetenceProfileInfo: CompetenceProfileInfo = {
   assessmentId: '',
   content: '',
 };
+
+export type CompetenceAtlasInfo = {
+  assessmentId: string;
+  content: string;
+};
+
+export const defaultCompetenceAtlasInfo: CompetenceAtlasInfo = {
+  assessmentId: '',
+  content: '',
+};

@@ -2,8 +2,10 @@ import { Injectable, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   AssessmentInfo,
+  CompetenceAtlasInfo,
   CompetenceProfileInfo,
   defaultAssessmentInfo,
+  defaultCompetenceAtlasInfo,
   defaultCompetenceProfileInfo,
 } from './assessment-info';
 import { Observable, Subject, from, of } from 'rxjs';
@@ -42,6 +44,11 @@ const competenceProfileInfo: CompetenceProfileInfo = {
   content: `<p>Über dein <strong>KODE® Kompetenzprofil</strong> erhälst du Aufschluss über deine 4 Basiskompetenzen</p>`,
 };
 
+const competenceAtlasInfo: CompetenceAtlasInfo = {
+  assessmentId: '123',
+  content: `<p>Der <strong>KODE® Kompetenzatlas</strong> zeigt dir, wie du deine Kompetenzen in verschiedenen Bereichen einsetzen kannst.</p>`,
+};
+
 @Injectable({
   providedIn: 'root',
 })
@@ -61,8 +68,22 @@ export class AssessmentLoaderService {
   });
 
   loadCompetenceProfileInfo(assessmentId: string) {
+    const randomDelay = Math.random() * 5000;
     from([competenceProfileInfo])
-      .pipe(concatMap((info) => of(info).pipe(delay(1000))))
+      .pipe(concatMap((info) => of(info).pipe(delay(randomDelay))))
       .subscribe((info) => this.competenceProfileInfo$.next(info));
+  }
+
+  competenceAtlasInfo$: Subject<CompetenceAtlasInfo> = new Subject();
+
+  competenceAtlasInfo = toSignal(this.competenceAtlasInfo$, {
+    initialValue: defaultCompetenceAtlasInfo,
+  });
+
+  loadCompetenceAtlasInfo(assessmentId: string) {
+    const randomDelay = Math.random() * 5000;
+    from([competenceAtlasInfo])
+      .pipe(concatMap((info) => of(info).pipe(delay(randomDelay))))
+      .subscribe((info) => this.competenceAtlasInfo$.next(info));
   }
 }

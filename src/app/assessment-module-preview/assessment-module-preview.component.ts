@@ -11,12 +11,16 @@ import {
   defaultAssessmentModuleInfo,
 } from '../assessment-info';
 import { CompetenceProfilePreviewComponent } from '../competence-profile-preview/competence-profile-preview.component';
-import { delay } from 'rxjs';
+import { CompetenceAtlasPreviewComponent } from '../competence-atlas-preview/competence-atlas-preview.component';
 
 @Component({
   selector: 'app-assessment-module-preview',
   standalone: true,
-  imports: [CommonModule, CompetenceProfilePreviewComponent],
+  imports: [
+    CommonModule,
+    CompetenceProfilePreviewComponent,
+    CompetenceAtlasPreviewComponent,
+  ],
   templateUrl: './assessment-module-preview.component.html',
   styleUrl: './assessment-module-preview.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
