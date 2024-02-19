@@ -1,0 +1,5 @@
+@if (isLoading()) {
+<div>Das Kompetenzprofil wird geladen ...</div>
+} @else {
+<div [innerHTML]="competenceProfileInfo().content"></div>
+}

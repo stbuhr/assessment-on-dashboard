@@ -8,7 +8,9 @@
 
   <div class="content">
     @for (module of assessmentInfo().modules; track module.type) {
-    <app-assessment-module-preview></app-assessment-module-preview>
+    <app-assessment-module-preview
+      [moduleInfo]="module"
+    ></app-assessment-module-preview>
     }
   </div>
 </div>

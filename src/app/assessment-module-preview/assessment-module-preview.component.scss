@@ -3,6 +3,22 @@
 }
 
 .module {
-  min-height: 16rem;
-  padding: 1rem;
+  min-height: 18rem;
+  padding: 0;
+
+  h3 {
+    color: var(--active-foreground);
+    background-color: var(--active-background);
+    padding: 0.5rem;
+    margin: 0;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+}
+
+.module.pulsing > h3 {
+  background-color: var(--disabled-background);
 }

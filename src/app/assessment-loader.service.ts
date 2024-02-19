@@ -1,10 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable, computed } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import {
   AssessmentInfo,
-  AssessmentModuleInfo,
-} from './assessment-preview/assessment-preview.component';
-import { from, of } from 'rxjs';
+  CompetenceProfileInfo,
+  defaultAssessmentInfo,
+  defaultCompetenceProfileInfo,
+} from './assessment-info';
+import { Observable, Subject, from, of } from 'rxjs';
 import { concatMap, delay } from 'rxjs/operators';
 
 const assessmentInfo: AssessmentInfo = {
@@ -35,11 +37,8 @@ const assessmentInfo: AssessmentInfo = {
   ],
 };
 
-const defaultAssessmentInfo: AssessmentInfo = {
-  id: '',
-  title: '',
-  subtitle: '',
-  modules: [],
+const competenceProfileInfo: CompetenceProfileInfo = {
+  content: `<p>Über dein <strong>KODE® Kompetenzprofil</strong> erhälst du Aufschluss über deine 4 Basiskompetenzen</p>`,
 };
 
 @Injectable({
@@ -53,4 +52,16 @@ export class AssessmentLoaderService {
   assessmentInfo = toSignal(this.assessmentInfo$, {
     initialValue: defaultAssessmentInfo,
   });
+
+  competenceProfileInfo$: Subject<CompetenceProfileInfo> = new Subject();
+
+  competenceProfileInfo = toSignal(this.competenceProfileInfo$, {
+    initialValue: defaultCompetenceProfileInfo,
+  });
+
+  loadCompetenceProfileInfo(assessmentId: string) {
+    from([competenceProfileInfo])
+      .pipe(concatMap((info) => of(info).pipe(delay(1000))))
+      .subscribe((info) => this.competenceProfileInfo$.next(info));
+  }
 }

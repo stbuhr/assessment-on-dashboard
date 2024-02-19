@@ -10,25 +10,6 @@ import {
 import { AssessmentModulePreviewComponent } from '../assessment-module-preview/assessment-module-preview.component';
 import { AssessmentLoaderService } from '../assessment-loader.service';
 
-export type AssessmentModuleType =
-  | 'CompetenceProfile'
-  | 'CompetenceAtlas'
-  | 'Teamrole'
-  | 'CompetenceDevelopment'
-  | 'Strengths';
-
-export interface AssessmentModuleInfo {
-  title: string;
-  type: AssessmentModuleType;
-}
-
-export interface AssessmentInfo {
-  id: string;
-  title: string;
-  subtitle: string;
-  modules: AssessmentModuleInfo[];
-}
-
 @Component({
   selector: 'app-assessment-preview',
   standalone: true,
