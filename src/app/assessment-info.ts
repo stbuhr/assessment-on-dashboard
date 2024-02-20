@@ -2,7 +2,7 @@ export type AssessmentModuleType =
   | 'Unknown'
   | 'CompetenceProfile'
   | 'CompetenceAtlas'
-  | 'Teamrole'
+  | 'TeamRoles'
   | 'CompetenceDevelopment'
   | 'Strengths';
 
@@ -46,6 +46,16 @@ export type CompetenceAtlasInfo = {
 };
 
 export const defaultCompetenceAtlasInfo: CompetenceAtlasInfo = {
+  assessmentId: '',
+  content: '',
+};
+
+export type TeamRolesInfo = {
+  assessmentId: string;
+  content: string;
+};
+
+export const defaultTeamRolesInfo: TeamRolesInfo = {
   assessmentId: '',
   content: '',
 };

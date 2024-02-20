@@ -12,6 +12,7 @@ import {
 } from '../assessment-info';
 import { CompetenceProfilePreviewComponent } from '../competence-profile-preview/competence-profile-preview.component';
 import { CompetenceAtlasPreviewComponent } from '../competence-atlas-preview/competence-atlas-preview.component';
+import { TeamRolesPreviewComponent } from '../team-roles-preview/team-roles-preview.component';
 
 @Component({
   selector: 'app-assessment-module-preview',
@@ -20,6 +21,7 @@ import { CompetenceAtlasPreviewComponent } from '../competence-atlas-preview/com
     CommonModule,
     CompetenceProfilePreviewComponent,
     CompetenceAtlasPreviewComponent,
+    TeamRolesPreviewComponent,
   ],
   templateUrl: './assessment-module-preview.component.html',
   styleUrl: './assessment-module-preview.component.scss',

@@ -11,6 +11,11 @@
       assessmentId="assessmentId"
       (stateChanged)="stateChanged($event)"
     ></app-competence-atlas-preview>
+    } @case('TeamRoles') {
+    <app-team-roles-preview
+      assessmentId="assessmentId"
+      (stateChanged)="stateChanged($event)"
+    ></app-team-roles-preview>
     } @default { Es kann keine Vorschau angezeigt werden! } }
   </div>
 </div>

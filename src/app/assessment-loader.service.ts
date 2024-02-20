@@ -4,6 +4,7 @@ import {
   AssessmentInfo,
   CompetenceAtlasInfo,
   CompetenceProfileInfo,
+  TeamRolesInfo,
   defaultAssessmentInfo,
   defaultCompetenceAtlasInfo,
   defaultCompetenceProfileInfo,
@@ -26,7 +27,7 @@ const assessmentInfo: AssessmentInfo = {
     },
     {
       title: 'Teamrollen',
-      type: 'Teamrole',
+      type: 'TeamRoles',
     },
     {
       title: 'Kompetenzentwicklung',
@@ -47,6 +48,11 @@ const competenceProfileInfo: CompetenceProfileInfo = {
 const competenceAtlasInfo: CompetenceAtlasInfo = {
   assessmentId: '123',
   content: `<p>Der <strong>KODE® Kompetenzatlas</strong> zeigt dir, wie du deine Kompetenzen in verschiedenen Bereichen einsetzen kannst.</p>`,
+};
+
+const teamRolesInfo: TeamRolesInfo = {
+  assessmentId: '123',
+  content: `<p>Deine <strong>Teamrollen</strong> zeigen dir, wie du dich in einem Team verhälst.</p>`,
 };
 
 @Injectable({
@@ -85,5 +91,18 @@ export class AssessmentLoaderService {
     from([competenceAtlasInfo])
       .pipe(concatMap((info) => of(info).pipe(delay(randomDelay))))
       .subscribe((info) => this.competenceAtlasInfo$.next(info));
+  }
+
+  teamRolesInfo$: Subject<TeamRolesInfo> = new Subject();
+
+  teamRolesInfo = toSignal(this.teamRolesInfo$, {
+    initialValue: { assessmentId: '', content: '' },
+  });
+
+  loadTeamRolesInfo(assessmentId: string) {
+    const randomDelay = Math.random() * 5000;
+    from([teamRolesInfo])
+      .pipe(concatMap((info) => of(info).pipe(delay(randomDelay))))
+      .subscribe((info) => this.teamRolesInfo$.next(info));
   }
 }
