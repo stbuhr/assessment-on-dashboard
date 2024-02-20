@@ -5,6 +5,8 @@
 .module {
   min-height: 18rem;
   padding: 0;
+  transition: scale 0.5s ease-in-out;
+  cursor: pointer;
 
   h3 {
     color: var(--active-foreground);
@@ -22,4 +24,8 @@
 
 .module.pulsing > h3 {
   background-color: var(--disabled-background);
+}
+
+.module:hover {
+  scale: 1.05;
 }

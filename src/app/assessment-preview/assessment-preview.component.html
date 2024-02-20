@@ -1,6 +1,18 @@
 <div class="block pulsing preview" [class.pulsing]="!isLoaded()">
   @if (isLoaded()) {
-  <h2>{{ assessmentInfo().title }}</h2>
+  <div class="header">
+    <h2>{{ assessmentInfo().title }}</h2>
+    <div class="controls">
+      <div
+        class="info icon-button"
+        [class.blinking]="infoNotYetRead()"
+        (click)="openInfo()"
+      >
+        <mat-icon>info</mat-icon>
+      </div>
+      <div class="print icon-button"><mat-icon>print</mat-icon></div>
+    </div>
+  </div>
   <div class="subtitle">{{ assessmentInfo().subtitle }}</div>
   } @else {
   <h2>Auswertung wird geladen...</h2>

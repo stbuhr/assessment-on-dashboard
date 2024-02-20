@@ -1,4 +1,5 @@
 @use "styles/blocks";
+@use "styles/icons";
 
 :root {
   --default-background: hsl(0, 0%, 100%);
@@ -44,4 +45,13 @@ h2 {
   font-size: 1.75rem;
   line-height: 2.375rem;
   color: var(--active-background);
+}
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }

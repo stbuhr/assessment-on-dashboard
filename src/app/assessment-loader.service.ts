@@ -42,12 +42,12 @@ const assessmentInfo: AssessmentInfo = {
 
 const competenceProfileInfo: CompetenceProfileInfo = {
   assessmentId: '123',
-  content: `<p>Über dein <strong>KODE® Kompetenzprofil</strong> erhälst du Aufschluss über deine 4 Basiskompetenzen</p>`,
+  content: `<p>Über dein Kompetenzprofil erhälst du Aufschluss über deine 4 Basiskompetenzen</p>`,
 };
 
 const competenceAtlasInfo: CompetenceAtlasInfo = {
   assessmentId: '123',
-  content: `<p>Der <strong>KODE® Kompetenzatlas</strong> zeigt dir, wie du deine Kompetenzen in verschiedenen Bereichen einsetzen kannst.</p>`,
+  content: `<p>Der Kompetenzatlas zeigt dir, wie du deine Kompetenzen in verschiedenen Bereichen einsetzen kannst.</p>`,
 };
 
 const teamRolesInfo: TeamRolesInfo = {
@@ -55,12 +55,27 @@ const teamRolesInfo: TeamRolesInfo = {
   content: `<p>Deine <strong>Teamrollen</strong> zeigen dir, wie du dich in einem Team verhälst.</p>`,
 };
 
+const competenceDevelopmentInfo: CompetenceProfileInfo = {
+  assessmentId: '123',
+  content: `<p>Deine <strong>Kompetenzentwicklung</strong> zeigt dir, wie du dich weiterentwickeln kannst.</p>`,
+};
+
+const strengthsInfo: CompetenceProfileInfo = {
+  assessmentId: '123',
+  content: `<p>Deine <strong>Stärken</strong> zeigen dir, was du besonders gut kannst.</p>`,
+};
+
 @Injectable({
   providedIn: 'root',
 })
 export class AssessmentLoaderService {
+  private getRandomDelay(): number {
+    return 100;
+    //return Math.random() * 3000 + 2000;
+  }
+
   private assessmentInfo$ = from([assessmentInfo]).pipe(
-    concatMap((info) => of(info).pipe(delay(1000)))
+    concatMap((info) => of(info).pipe(delay(this.getRandomDelay())))
   );
 
   assessmentInfo = toSignal(this.assessmentInfo$, {
@@ -74,9 +89,8 @@ export class AssessmentLoaderService {
   });
 
   loadCompetenceProfileInfo(assessmentId: string) {
-    const randomDelay = Math.random() * 5000;
     from([competenceProfileInfo])
-      .pipe(concatMap((info) => of(info).pipe(delay(randomDelay))))
+      .pipe(concatMap((info) => of(info).pipe(delay(this.getRandomDelay()))))
       .subscribe((info) => this.competenceProfileInfo$.next(info));
   }
 
@@ -87,9 +101,8 @@ export class AssessmentLoaderService {
   });
 
   loadCompetenceAtlasInfo(assessmentId: string) {
-    const randomDelay = Math.random() * 5000;
     from([competenceAtlasInfo])
-      .pipe(concatMap((info) => of(info).pipe(delay(randomDelay))))
+      .pipe(concatMap((info) => of(info).pipe(delay(this.getRandomDelay()))))
       .subscribe((info) => this.competenceAtlasInfo$.next(info));
   }
 
@@ -100,9 +113,32 @@ export class AssessmentLoaderService {
   });
 
   loadTeamRolesInfo(assessmentId: string) {
-    const randomDelay = Math.random() * 5000;
     from([teamRolesInfo])
-      .pipe(concatMap((info) => of(info).pipe(delay(randomDelay))))
+      .pipe(concatMap((info) => of(info).pipe(delay(this.getRandomDelay()))))
       .subscribe((info) => this.teamRolesInfo$.next(info));
+  }
+
+  competenceDevelopmentInfo$: Subject<CompetenceProfileInfo> = new Subject();
+
+  competenceDevelopmentInfo = toSignal(this.competenceDevelopmentInfo$, {
+    initialValue: { assessmentId: '', content: '' },
+  });
+
+  loadCompetenceDevelopmentInfo(assessmentId: string) {
+    from([competenceDevelopmentInfo])
+      .pipe(concatMap((info) => of(info).pipe(delay(this.getRandomDelay()))))
+      .subscribe((info) => this.competenceDevelopmentInfo$.next(info));
+  }
+
+  strengthsInfo$: Subject<CompetenceProfileInfo> = new Subject();
+
+  strengthsInfo = toSignal(this.strengthsInfo$, {
+    initialValue: { assessmentId: '', content: '' },
+  });
+
+  loadStrengthsInfo(assessmentId: string) {
+    from([strengthsInfo])
+      .pipe(concatMap((info) => of(info).pipe(delay(this.getRandomDelay()))))
+      .subscribe((info) => this.strengthsInfo$.next(info));
   }
 }

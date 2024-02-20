@@ -59,3 +59,23 @@ export const defaultTeamRolesInfo: TeamRolesInfo = {
   assessmentId: '',
   content: '',
 };
+
+export type CompetenceDevelopmentInfo = {
+  assessmentId: string;
+  content: string;
+};
+
+export const defaultCompetenceDevelopmentInfo: CompetenceDevelopmentInfo = {
+  assessmentId: '',
+  content: '',
+};
+
+export type StrengthsInfo = {
+  assessmentId: string;
+  content: string;
+};
+
+export const defaultStrengthsInfo: StrengthsInfo = {
+  assessmentId: '',
+  content: '',
+};

@@ -16,6 +16,16 @@
       assessmentId="assessmentId"
       (stateChanged)="stateChanged($event)"
     ></app-team-roles-preview>
-    } @default { Es kann keine Vorschau angezeigt werden! } }
+    } @case('CompetenceDevelopment') {
+    <app-competence-development-preview
+      assessmentId="assessmentId"
+      (stateChanged)="stateChanged($event)"
+    ></app-competence-development-preview>
+    } @case('Strengths') {
+    <app-strengths-preview
+      assessmentId="assessmentId"
+      (stateChanged)="stateChanged($event)"
+    ></app-strengths-preview
+    >} @default { Es kann keine Vorschau angezeigt werden! } }
   </div>
 </div>

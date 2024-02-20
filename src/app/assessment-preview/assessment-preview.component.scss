@@ -2,9 +2,21 @@
   display: block;
 }
 
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+
+  .controls {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 0.5rem;
+    padding: 1rem;
+    color: var(--active-background);
+  }
+}
+
 h2 {
-  padding: 1rem;
-  padding-bottom: 0;
+  padding: 0 1rem;
 }
 
 .subtitle {
