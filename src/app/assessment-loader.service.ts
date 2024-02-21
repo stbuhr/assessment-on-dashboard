@@ -52,17 +52,17 @@ const competenceAtlasInfo: CompetenceAtlasInfo = {
 
 const teamRolesInfo: TeamRolesInfo = {
   assessmentId: '123',
-  content: `<p>Deine <strong>Teamrollen</strong> zeigen dir, wie du dich in einem Team verhälst.</p>`,
+  content: `<p>Deine Teamrollen zeigen dir, wie du dich in einem Team verhälst.</p>`,
 };
 
 const competenceDevelopmentInfo: CompetenceProfileInfo = {
   assessmentId: '123',
-  content: `<p>Deine <strong>Kompetenzentwicklung</strong> zeigt dir, wie du dich weiterentwickeln kannst.</p>`,
+  content: `<p>Deine Kompetenzentwicklung zeigt dir, wie du dich weiterentwickeln kannst.</p>`,
 };
 
 const strengthsInfo: CompetenceProfileInfo = {
   assessmentId: '123',
-  content: `<p>Deine <strong>Stärken</strong> zeigen dir, was du besonders gut kannst.</p>`,
+  content: `<p>Deine Stärken zeigen dir, was du besonders gut kannst.</p>`,
 };
 
 @Injectable({
@@ -70,12 +70,13 @@ const strengthsInfo: CompetenceProfileInfo = {
 })
 export class AssessmentLoaderService {
   private getRandomDelay(): number {
-    return 100;
-    //return Math.random() * 3000 + 2000;
+    //return 100;
+    return Math.random() * 3000 + 2000;
   }
 
   private assessmentInfo$ = from([assessmentInfo]).pipe(
-    concatMap((info) => of(info).pipe(delay(this.getRandomDelay())))
+    // concatMap((info) => of(info).pipe(delay(this.getRandomDelay())))
+    concatMap((info) => of(info).pipe(delay(100)))
   );
 
   assessmentInfo = toSignal(this.assessmentInfo$, {

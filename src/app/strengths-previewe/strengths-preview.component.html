@@ -1,5 +1,10 @@
-@if (isLoading()) {
-<div>Das Modul Stärken wird geladen ...</div>
-} @else {
-<div [innerHTML]="strengthsInfo().content"></div>
-}
+<div class="frame">
+  <div class="intro" [class.loading]="isLoading()">
+    <img src="assets/strengths.svg" alt="Stärken" />
+    @if (isLoading()) {
+    <div>Das Modul Stärken wird geladen ...</div>
+    } @else {
+    <div class="text" [innerHTML]="strengthsInfo().content"></div>
+    }
+  </div>
+</div>

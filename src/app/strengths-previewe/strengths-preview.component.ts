@@ -16,7 +16,7 @@ import { AssessmentLoaderService } from '../assessment-loader.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './strengths-preview.component.html',
-  styleUrl: './strengths-preview.component.scss',
+  styleUrls: ['./strengths-preview.component.scss', '../module-preview.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class StrengthsPreviewComponent {
@@ -25,7 +25,7 @@ export class StrengthsPreviewComponent {
   private _assessmentId = '';
   assessmentId = input<string>(this._assessmentId);
   private _infoId = '';
-  strengthsInfo = this.assessmentLoader.competenceDevelopmentInfo;
+  strengthsInfo = this.assessmentLoader.strengthsInfo;
   isLoading = computed(() => this.strengthsInfo().content === '');
 
   @Output() stateChanged = new EventEmitter<boolean>();

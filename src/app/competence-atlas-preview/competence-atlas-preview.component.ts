@@ -16,7 +16,10 @@ import { AssessmentLoaderService } from '../assessment-loader.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './competence-atlas-preview.component.html',
-  styleUrl: './competence-atlas-preview.component.scss',
+  styleUrls: [
+    './competence-atlas-preview.component.scss',
+    '../module-preview.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CompetenceAtlasPreviewComponent {

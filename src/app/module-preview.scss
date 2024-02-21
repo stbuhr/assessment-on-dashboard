@@ -1,0 +1,48 @@
+@keyframes pulsing-image {
+  0% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0.9;
+  }
+  45% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.1;
+  }
+  55% {
+    opacity: 0.2;
+  }
+  95% {
+    opacity: 0.9;
+  }
+}
+
+.intro {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+
+  img {
+    width: 5rem;
+    transition: all 0.5s;
+  }
+
+  .text {
+    margin-top: -1rem;
+  }
+}
+
+.loading {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  img {
+    width: 10rem;
+    animation-name: pulsing-image;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+  }
+}

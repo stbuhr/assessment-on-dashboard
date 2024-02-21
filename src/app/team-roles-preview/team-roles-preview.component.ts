@@ -16,7 +16,7 @@ import { AssessmentLoaderService } from '../assessment-loader.service';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './team-roles-preview.component.html',
-  styleUrl: './team-roles-preview.component.scss',
+  styleUrls: ['./team-roles-preview.component.scss', '../module-preview.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TeamRolesPreviewComponent {

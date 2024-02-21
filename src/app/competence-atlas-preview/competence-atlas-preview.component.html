@@ -1,5 +1,5 @@
 <div class="frame">
-  <div class="intro">
+  <div class="intro" [class.loading]="isLoading()">
     <img src="assets/atlas.svg" alt="Kompetenzatlas" />
     @if (isLoading()) {
     <div>Der Kompetenzatlas wird geladen ...</div>

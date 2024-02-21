@@ -1,5 +1,10 @@
-@if (isLoading()) {
-<div>Die Kompetenzentwicklung wird geladen ...</div>
-} @else {
-<div [innerHTML]="competenceDevelopmentInfo().content"></div>
-}
+<div class="frame">
+  <div class="intro" [class.loading]="isLoading()">
+    <img src="assets/development.svg" alt="Kompetenzatlas" />
+    @if (isLoading()) {
+    <div>Das Modul wird geladen ...</div>
+    } @else {
+    <div class="text" [innerHTML]="competenceDevelopmentInfo().content"></div>
+    }
+  </div>
+</div>
