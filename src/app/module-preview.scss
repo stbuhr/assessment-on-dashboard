@@ -46,3 +46,23 @@
     animation-iteration-count: infinite;
   }
 }
+
+.content {
+  padding-top: 1rem;
+
+  .citation {
+    padding-top: 1rem;
+
+    .text {
+      font-style: italic;
+      color: var(--title-text);
+      text-align: center;
+    }
+
+    .author {
+      font-size: 0.8rem;
+      text-align: right;
+      color: var(--disabled-text);
+    }
+  }
+}

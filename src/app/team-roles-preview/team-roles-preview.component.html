@@ -7,4 +7,18 @@
     <div class="text" [innerHTML]="teamRolesInfo().content"></div>
     }
   </div>
+  @if (!isLoading()) {
+  <div class="content">
+    <div>
+      Unter normalen Bedingungen nimmst du die Teamrolle
+      <strong>Stilles Vorbild</strong> ein.
+    </div>
+    <div class="citation">
+      <div class="text">
+        Der Mut zur Selbsterkenntnis verrät Charakterstärke
+      </div>
+      <div class="author">Ernst Ferstl</div>
+    </div>
+  </div>
+  }
 </div>

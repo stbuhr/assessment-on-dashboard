@@ -70,13 +70,12 @@ const strengthsInfo: CompetenceProfileInfo = {
 })
 export class AssessmentLoaderService {
   private getRandomDelay(): number {
-    //return 100;
-    return Math.random() * 3000 + 2000;
+    return 100;
+    // return Math.random() * 3000 + 2000;
   }
 
   private assessmentInfo$ = from([assessmentInfo]).pipe(
-    // concatMap((info) => of(info).pipe(delay(this.getRandomDelay())))
-    concatMap((info) => of(info).pipe(delay(100)))
+    concatMap((info) => of(info).pipe(delay(this.getRandomDelay())))
   );
 
   assessmentInfo = toSignal(this.assessmentInfo$, {
